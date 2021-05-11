@@ -1,0 +1,37 @@
+import 'package:{{APP_NAME}}\core\model_base.dart';
+
+class {{NAME}} extends ModelBase {
+  late List<Result> result;
+
+  {{NAME}}({required this.result});
+
+  {{NAME}}.fromJson(Map<String, dynamic> json) {
+    if (json['data'] != null) {
+      result = <Result>[];
+      json['data'].forEach((v) {
+        result.add(Result.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['data'] = result.map((v) => v.toJson()).toList();
+    return data;
+  }
+}
+
+class Result extends ModelBase {
+  //late int id;
+  //Result({required this.id});
+
+  Result.fromJson(Map<String, dynamic> json) {
+    //id = json['id];
+  }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    //data['id'] = id;
+    return data;
+  }
+}

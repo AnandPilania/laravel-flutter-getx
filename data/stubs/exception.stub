@@ -1,0 +1,5 @@
+import 'package:{{APP_NAME}}/core/app_exception.dart';
+
+class {{NAME}}Exception extends AppException {
+  {{NAME}}Exception([message]) : super(message, "{{NAME}}Exception: ");
+}

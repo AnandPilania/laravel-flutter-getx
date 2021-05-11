@@ -1,0 +1,9 @@
+import 'package:{{APP_NAME}}/core/translation_base.dart';
+
+class {{NAME}} extends TranslationBase {
+  static List<String, String> translations() {
+    return {
+      //title: 'Hello'
+    };
+  }
+}

@@ -1,0 +1,3 @@
+import 'package:{{APP_NAME}}/core/provider_base.dart';
+
+class {{NAME}}Provider extends ProviderBase {}

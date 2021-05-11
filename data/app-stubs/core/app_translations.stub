@@ -1,0 +1,10 @@
+import 'package:get/get.dart';
+import 'package:{{APP_NAME}}/resources/lang/en.dart';
+
+class AppTranslations extends Translations {
+  @override
+  Map<String, Map<String, String>> get keys => {
+        'en': En.translations(),
+        'en_US': En.translations(),
+      };
+}

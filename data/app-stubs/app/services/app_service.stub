@@ -1,0 +1,19 @@
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:{{APP_NAME}}/app/models/user.dart';
+
+class AppService extends GetxService {
+  Rx<User?> _user = null.obs;
+  User get user => _user.value!;
+  set user(User v) => _user.value = v;
+
+  GetStorage? _storage;
+  GetStorage get storage => _storage!;
+
+  Future<AppService> init() async {
+    _storage = GetStorage();
+    user = storage.read('user');
+    
+    return this;
+  }
+}

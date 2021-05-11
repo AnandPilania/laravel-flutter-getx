@@ -1,0 +1,13 @@
+const String ENV = ENV_DEV;
+const String ENV_DEV = 'dev';
+const String ENV_PROD = 'prod';
+String get env => ENV;
+
+const bool MOCK_DATA = false;
+const int MOCK_DELAY = 5;
+bool get canMock => ENV == ENV_DEV && MOCK_DATA;
+
+const String DEV_API = 'http://localhost:8000/api/';
+const String PROD_API = 'https://kspedu.com/api/';
+String get api => ENV == ENV_DEV ? DEV_API : PROD_API;
+const String API_CONFIG = 'config';

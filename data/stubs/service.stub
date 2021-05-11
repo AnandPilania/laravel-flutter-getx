@@ -1,0 +1,9 @@
+import 'package:get/get.dart';
+
+class {{NAME}}Service extends GetxService {
+  Future<{{NAME}}Service> init() async {
+    // TODO: {{NAME}}Service implementation
+    
+    return this;
+  }
+}

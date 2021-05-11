@@ -1,0 +1,43 @@
+{
+    "name": "kspedu/laravel-flutter-getx",
+    "description": "Laravel package that easily scaffold Flutter project as Laravel structure & GetX",
+    "keywords": ["laravel", "getx", "flutter", "scaffold", "php-laravel"],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/pilaniaanand/laravel-flutter-getx/issues",
+        "source": "https://github.com/pilaniaanand/laravel-flutter-getx"
+    },
+    "authors": [
+        {
+            "name": "Anand Pilania",
+            "email": "pilaniaanand@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^8.12",
+        "symfony/yaml": "^5.2"
+    },
+    "bin": [
+        "bin/ksp-lfg"
+    ],
+    "autoload": {
+        "psr-4": {
+            "KSPEdu\\LaravelFlutterGetx\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "KSPEdu\\LaravelFlutterGetx\\ServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -1,0 +1,19 @@
+import 'package:get/get.dart';
+import 'package:{{APP_NAME}}/core/controller_base.dart';
+
+class {{NAME}}Controller extends ControllerBase {
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+  }
+}

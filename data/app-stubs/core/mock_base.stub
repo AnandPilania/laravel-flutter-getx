@@ -1,0 +1,5 @@
+import 'package:{{APP_NAME}}/code/model_base.dart';
+
+abstract class MockBase {
+    static ModelBase result(data);
+}

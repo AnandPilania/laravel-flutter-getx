@@ -1,0 +1,26 @@
+import 'package:get/get.dart';
+import 'package:{{APP_NAME}}/routes.dart';
+
+abstract class ControllerBase extends GetxController {
+  AppService _appService = Get.find();
+  
+  String? _returnTo;
+  RxBool _isProcessing = true.obs;
+  bool get isProcessing => _isProcessing.value;
+  set isProcessing(bool v) => _isProcessing.value = v;
+
+  @override
+  void onInit() {
+    _returnTo = Get.parameters['returnTo'];
+
+    super.onInit();
+  }
+
+  void comeBack(String goTo, String returnTo) {
+    Get.toNamed('$goTo?returnTo=$returnTo');
+  }
+
+  void goBack() {
+    Get.offAllNamed((_returnTo ?? Routes.SPLASH) + '?returned=true');
+  }
+}
