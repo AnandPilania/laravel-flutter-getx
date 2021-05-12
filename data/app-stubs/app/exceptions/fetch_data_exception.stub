@@ -1,6 +1,6 @@
-import 'package:{{APP_NAME}}/core/app_exception.dart';
+import 'package:{{APP_NAME}}/core/exception_base.dart';
 
-class FetchDataException extends AppException {
+class FetchDataException extends ExceptionBase {
   FetchDataException([message])
       : super(message, "Error During Communication: ");
 }

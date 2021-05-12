@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
 import 'package:{{APP_NAME}}/app/models/config.dart';
+import 'package:{{APP_NAME}}/core/mock_base.dart';
 
 class ConfigMock extends MockBase {
-  static Config result(data) {
+  Config result(data) {
     return Config(
-      name: 'Flutter App', 
+      name: 'Flutter App',
       version: '1.0.0',
       subVersion: 1,
       isAuthProtected: false,
@@ -12,7 +13,7 @@ class ConfigMock extends MockBase {
       apiProtectionHeaders: {
         'flutter_app': 'version.subVersion',
       },
-      updatedAt: DateTime.now()->subtract(3.days),
+      updatedAt: DateTime.now().subtract(3.days),
     );
   }
 }

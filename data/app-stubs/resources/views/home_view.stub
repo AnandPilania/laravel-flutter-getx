@@ -8,8 +8,12 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       body: Container(
         child: Center(
-          child: Text('HomeView [Count: $controller.count]'),
+          child: Obx(() => Text("HomeView [Count: ${controller.count}]")),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: controller.increment,
+        child: Icon(Icons.add),
       ),
     );
   }

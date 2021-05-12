@@ -1,25 +1,42 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:{{APP_NAME}}/app/controllers/config_controller.dart';
 import 'package:{{APP_NAME}}/app/models/config.dart';
 import 'package:{{APP_NAME}}/app/models/user.dart';
+import 'package:{{APP_NAME}}/app/providers/config_provider.dart';
 
 class AppService extends GetxService {
-  Rx<Config?> _config = null.obs;
-  Config get config => _config.value!;
-  set config(Config v) => _config.value = v;
+  Rxn<Config> _config = Rxn<Config>();
+  Config? get config => _config.value;
+  set config(Config? c) => _config.value = c;
 
-  Rx<User?> _user = null.obs;
-  User get user => _user.value!;
-  set user(User v) => _user.value = v;
+  Rx<User?> _user = Rxn<User>();
+  User? get user => _user.value;
+  set user(User? v) => _user.value = v;
 
   GetStorage? _storage;
   GetStorage get storage => _storage!;
 
   Future<AppService> init() async {
     _storage = GetStorage();
-    config = storage.get('config);
-    user = storage.read('user');
-    
+
+    if (storage.read('user') != null) {
+      user = storage.read('user');
+    }
+
+    if (storage.read('config') != null) {
+      print('fromStorage');
+      config = Config.fromJson(jsonDecode(storage.read('config')));
+    } else {
+      print('fromProvider');
+      Config? configResult =
+          await ConfigController(ConfigProvider()).initConfig();
+      storage.write('config', jsonEncode(configResult.toJson()));
+      config = configResult;
+    }
+
     return this;
   }
 }

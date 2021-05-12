@@ -19,5 +19,5 @@ class HomeController extends ControllerBase {
     super.onClose();
   }
 
-  void increment => count.value++;
+  void increment() => count.value++;
 }

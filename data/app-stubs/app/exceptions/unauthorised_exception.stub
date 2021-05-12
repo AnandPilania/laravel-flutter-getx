@@ -1,5 +1,5 @@
-import 'package:{{APP_NAME}}/core/app_exception.dart';
+import 'package:{{APP_NAME}}/core/exception_base.dart';
 
-class UnauthorisedException extends AppException {
+class UnauthorisedException extends ExceptionBase {
   UnauthorisedException([message]) : super(message, "Unauthorised: ");
 }

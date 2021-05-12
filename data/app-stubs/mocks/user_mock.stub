@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
 import 'package:{{APP_NAME}}/app/models/user.dart';
+import 'package:{{APP_NAME}}/core/mock_base.dart';
 
 class UserMock extends MockBase {
-  static User result(data) {
+  User result(data) {
     return User(
-      id: 1, 
+      id: 1,
       name: 'My Name',
       email: 'example@email.com',
       token: 'abc123xyz890',

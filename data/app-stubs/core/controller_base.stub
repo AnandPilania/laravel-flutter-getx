@@ -3,17 +3,17 @@ import 'package:{{APP_NAME}}/app/services/app_service.dart';
 import 'package:{{APP_NAME}}/routes.dart';
 
 abstract class ControllerBase extends GetxController {
-  AppService _appService = Get.find();
-  AppService get appService => _appService;
-  
+  AppService? appService;
+
   String? _returnTo;
   RxBool _isProcessing = true.obs;
   bool get isProcessing => _isProcessing.value;
   set isProcessing(bool v) => _isProcessing.value = v;
 
   @override
-  void onInit() {
+  void onInit() async {
     isProcessing = true;
+    appService = Get.find<AppService>();
     _returnTo = Get.parameters['returnTo'];
 
     super.onInit();
@@ -30,6 +30,6 @@ abstract class ControllerBase extends GetxController {
   }
 
   void goBack() {
-    Get.offAllNamed((_returnTo ?? Routes.SPLASH) + '?returned=true');
+    Get.offAllNamed((_returnTo ?? Routes.HOME) + '?returned=true');
   }
 }

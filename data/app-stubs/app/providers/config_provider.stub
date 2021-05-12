@@ -5,18 +5,20 @@ import 'package:{{APP_NAME}}/core/response_api.dart';
 import 'package:{{APP_NAME}}/mocks/config_mock.dart';
 
 class ConfigProvider extends ProviderBase {
-    Future<ResponseApi<Config>> getConfig() async {
-        ResponseApi.loading(K_LOADING);
+  Future<ResponseApi<Config>> getConfig() async {
+    ResponseApi.loading(K_LOADING);
 
-        try {
-            if(canMock) {
-                return ResponseApi.completed(getMockData(ConfigMock(), null));
-            }
+    try {
+      if (canMock) {
+        var _m = await getMockData(ConfigMock(), null);
 
-            var _r = await get(API_CONFIG);
-            return ResponseApi.completed(Config.fromJson($r.body));
-        } catch(e) {
-            return ResponseApi.error(e.toString());
-        }
+        return ResponseApi.completed(_m as Config);
+      }
+
+      var _r = await get(API_CONFIG);
+      return ResponseApi.completed(Config.fromJson(_r.body));
+    } catch (e) {
+      return ResponseApi.error(e.toString());
     }
+  }
 }

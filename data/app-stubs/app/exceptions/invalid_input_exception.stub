@@ -1,5 +1,5 @@
-import 'package:{{APP_NAME}}/core/app_exception.dart';
+import 'package:{{APP_NAME}}/core/exception_base.dart';
 
-class InvalidInputException extends AppException {
+class InvalidInputException extends ExceptionBase {
   InvalidInputException([message]) : super(message, "Invalid Input: ");
 }

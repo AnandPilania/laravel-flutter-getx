@@ -1,7 +1,7 @@
 class ResponseApi<T> {
-  late Status status;
-  late T data;
-  late String message;
+  Status? status;
+  T? data;
+  String? message;
 
   ResponseApi.loading(this.message) : status = Status.LOADING;
   ResponseApi.completed(this.data) : status = Status.COMPLETED;

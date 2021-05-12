@@ -26,9 +26,13 @@ class CreateProjectCommand extends Command
     ];
 
     protected $scaffold = [
-        'app/bindings' => 'home_binding.stub',
+        'app/bindings' => [
+            'config_binding.stub',
+            'home_binding.stub',
+        ],
         'app/controllers' => [
-            'config_controller.stub', 'home_controller.stub',
+            'config_controller.stub',
+            'home_controller.stub',
         ],
         'app/exceptions' => [
             'bad_request_exception.stub',
@@ -37,7 +41,11 @@ class CreateProjectCommand extends Command
             'unauthorised_exception.stub',
         ],
         'app/models' => [
-            'config.stub', 'user.stub',
+            'config.stub',
+            'user.stub',
+        ],
+        'app/providers' => [
+            'config_provider.stub',
         ],
         'app/services' => 'app_service.stub',
 
@@ -55,11 +63,8 @@ class CreateProjectCommand extends Command
         ],
 
         'mocks' => [
-            'config_mock.stub', 'user_mock.stub',
-        ],
-
-        'providers' => [
-            'config_provider.stub',
+            'config_mock.stub',
+            'user_mock.stub',
         ],
 
         'resources/lang' => 'en.stub',
@@ -163,7 +168,7 @@ class CreateProjectCommand extends Command
             'get_storage' => '^2.0.2',
         ], $currentDeps);
 
-        if ($this->option('null-safety')) {
+        if ($this->option('null-safety') == null) {
             $pubspec['environment']['sdk'] = '>=2.12.0 <3.0.0';
         }
 

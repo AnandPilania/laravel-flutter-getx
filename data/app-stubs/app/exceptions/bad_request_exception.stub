@@ -1,5 +1,5 @@
-import 'package:{{APP_NAME}}/core/app_exception.dart';
+import 'package:{{APP_NAME}}/core/exception_base.dart';
 
-class BadRequestException extends AppException {
+class BadRequestException extends ExceptionBase {
   BadRequestException([message]) : super(message, "Invalid Request: ");
 }

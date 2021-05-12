@@ -1,19 +1,38 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/request/request.dart';
 import 'package:{{APP_NAME}}/config/constants.dart';
+import 'package:{{APP_NAME}}/core/mock_base.dart';
+import 'package:{{APP_NAME}}/core/model_base.dart';
 import 'package:{{APP_NAME}}/app/exceptions/bad_request_exception.dart';
 import 'package:{{APP_NAME}}/app/exceptions/unauthorised_exception.dart';
 import 'package:{{APP_NAME}}/app/exceptions/fetch_data_exception.dart';
-import 'package:{{APP_NAME}}/app/models/config.dart';
+import 'package:{{APP_NAME}}/app/services/app_service.dart';
 
 abstract class ProviderBase extends GetConnect {
-  AppService _appService = Get.find();
+  AppService? appService;
 
   @override
   void onInit() async {
+    appService = Get.find<AppService>();
+
     httpClient.baseUrl = api;
-    await _setHeaders();
+
+    if (appService!.config!.isApiProtected != null &&
+        appService!.config!.apiProtectionHeaders != null) {
+      if (appService!.user != null) {
+        httpClient.addAuthenticator((Request request) {
+          request.headers['Authorization'] = "Bearer $appService.user.token";
+          return request;
+        });
+      }
+
+      httpClient.addRequestModifier((Request request) {
+        request.headers['apikey'] = '12345678';
+        return request;
+      });
+    }
   }
 
   dynamic response(Response r) {
@@ -33,15 +52,9 @@ abstract class ProviderBase extends GetConnect {
     }
   }
 
-  Future<void> _setHeaders() {
-    if(_appService.config.isApiProtected != null && _appService.config.apiProtectionHeaders != null) {
-      List<String, dynamic> headers = {};
-
-      if(appService.user) {
-        headers.add('Authorization', 'Bearer ');
-      }
-
-      httpClient.headers = {};
-    }
+  Future<ModelBase> getMockData(MockBase mock, data) {
+    return Future.delayed(MOCK_DELAY.seconds, () {
+      return mock.result(data);
+    });
   }
 }

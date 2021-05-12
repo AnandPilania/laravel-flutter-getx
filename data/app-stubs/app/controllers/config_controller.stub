@@ -1,6 +1,6 @@
-import 'package:get/get.dart';
 import 'package:{{APP_NAME}}/app/providers/config_provider.dart';
 import 'package:{{APP_NAME}}/core/controller_base.dart';
+import 'package:{{APP_NAME}}/app/models/config.dart';
 
 class ConfigController extends ControllerBase {
   ConfigProvider _provider;
@@ -8,14 +8,10 @@ class ConfigController extends ControllerBase {
 
   @override
   void onInit() async {
-    if(appService.config == null) {
-      isProcessing = true;
-      await _provider.getConfig().then((v) {
-        appService.config(v)
-        appService.storage.write('config', v);
+    if (appService!.config == null) {
+      await initConfig().then((v) {
+        appService!.config = v;
       });
-
-      isProcessing = false;
     }
 
     super.onInit();
@@ -29,5 +25,13 @@ class ConfigController extends ControllerBase {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  Future<Config> initConfig() async {
+    isProcessing = true;
+    return await _provider.getConfig().then((v) {
+      isProcessing = false;
+      return v.data as Config;
+    });
   }
 }
