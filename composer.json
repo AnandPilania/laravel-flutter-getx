@@ -17,9 +17,6 @@
         "laravel/framework": "^8.12",
         "symfony/yaml": "^5.2"
     },
-    "bin": [
-        "bin/ksp-lfg"
-    ],
     "autoload": {
         "psr-4": {
             "KSPEdu\\LaravelFlutterGetx\\": "src/"
