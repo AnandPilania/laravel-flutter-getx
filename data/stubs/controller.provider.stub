@@ -5,7 +5,7 @@ import 'package:{{APP_NAME}}/core/controller_base.dart';
 class {{NAME}}Controller extends ControllerBase {
   {{PROVIDER}}Provider _{{SPROVIDER}}Provider;
   {{NAME}}Controller(this._{{SPROVIDER}}Provider);
-  
+
   @override
   void onInit() {
     super.onInit();

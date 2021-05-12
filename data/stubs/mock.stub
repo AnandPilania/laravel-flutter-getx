@@ -1,13 +1,7 @@
-import 'package:{{APP_NAME}}/app/models/user.dart' as model;
+import 'package:{{APP_NAME}}/core/BaseModel.dart' as model;
 
 class {{NAME}}Mock extends MockBase {
-  static model.User result(data) {
-    return model.Result(
-      user: model.Result(
-        id: 1, 
-        name: 'My Name',
-        email: 'example@email.com',
-      ),
-    );
+  static model.BaseModel result(data) {
+    return model.BaseModel();
   }
 }

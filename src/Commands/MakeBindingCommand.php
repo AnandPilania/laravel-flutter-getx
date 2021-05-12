@@ -15,7 +15,7 @@ class MakeBindingCommand extends FlutterGeneratorCommand
 
     public function handle()
     {
-        if($this->option('provider') && !$this->option('controller')) {
+        if ($this->option('provider') && !$this->option('controller')) {
             $this->error('Controller is required to use Provider');
 
             return false;
@@ -26,14 +26,15 @@ class MakeBindingCommand extends FlutterGeneratorCommand
         }
     }
 
-    protected function replaceWith($stub, $name) {
+    protected function replaceWith($stub, $name)
+    {
         $controller = $this->option('controller') ?? '';
         $provider = $this->option('provider') ?? '';
 
         $controllerReplaced = str_replace('{{CONTROLLER}}', Str::title($controller), $stub);
-        $sControllerReplaced = str_replace('{{SCONTROLLER}}', Str::lower($controller), $controllerReplaced);
+        $sControllerReplaced = str_replace('{{SCONTROLLER}}', $this->getFlutteredName($controller), $controllerReplaced);
         $providerReplaced = str_replace('{{PROVIDER}}', Str::title($provider), $sControllerReplaced);
-        $sProviderReplaced = str_replace('{{SPROVIDER}}', Str::lower($provider), $providerReplaced);
+        $sProviderReplaced = str_replace('{{SPROVIDER}}', $this->getFlutteredName($provider), $providerReplaced);
 
         return $sProviderReplaced;
     }
@@ -42,11 +43,11 @@ class MakeBindingCommand extends FlutterGeneratorCommand
     {
         $stub = __DIR__ . $this->stubPath . '/binding';
 
-        if($this->option('controller') && $this->option('provider') || $this->option('provider')) {
+        if ($this->option('controller') && $this->option('provider') || $this->option('provider')) {
             return $stub .= '.controller.provider.stub';
         }
-        
-        if($this->option('controller')) {
+
+        if ($this->option('controller')) {
             $stub .= '.controller';
         }
 

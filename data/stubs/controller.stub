@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:{{APP_NAME}}/core/controller_base.dart';
 
 class {{NAME}}Controller extends ControllerBase {
+  RxInt count = 0.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -16,4 +18,6 @@ class {{NAME}}Controller extends ControllerBase {
   void onClose() {
     super.onClose();
   }
+
+  void increment => count.value++;
 }

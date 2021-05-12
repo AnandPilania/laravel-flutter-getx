@@ -17,8 +17,10 @@ class MakeViewCommand extends FlutterGeneratorCommand
         }
     }
 
-    protected function replaceWith($stub, $name) {}
-    
+    protected function replaceWith($stub, $name)
+    {
+    }
+
     protected function getStub()
     {
         return __DIR__ . $this->stubPath . '/view.stub';

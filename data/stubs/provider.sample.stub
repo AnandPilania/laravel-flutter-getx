@@ -1,0 +1,23 @@
+import 'package:get/get.dart';
+import 'package:{{APP_NAME}}/app/models/user.dart';
+import 'package:{{APP_NAME}}/config/constants.dart';
+import 'package:{{APP_NAME}}/core/provider_base.dart';
+import 'package:{{APP_NAME}}/core/response_api.dart';
+import 'package:{{APP_NAME}}/mocks/user_mock.dart';
+
+class {{NAME}}Provider extends ProviderBase {
+    Future<ResponseApi> getUser() {
+        ResponseApi.loading('K_LOADING'); // Add K_LOADING string to constants file
+
+        try {
+            if(canMock) {
+                return ResponseApi.completed(getMockData(UserMock(), null));
+            }
+
+            var _r = get('API_USER_GET'); // Add API_USER_GET api to constants file
+            return ResponseApi.completed(User.fromJson(_r.body));
+        } catch(e) {
+            return ResponseApi.error(e.toString());
+        }
+    }
+}

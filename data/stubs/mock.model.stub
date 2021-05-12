@@ -1,0 +1,11 @@
+import 'package:{{APP_NAME}}/app/models/{{SMODEL}}.dart' as model;
+
+class {{NAME}}Mock extends MockBase {
+  static model.{{MODEL}} result(data) {
+    return model.Result(
+      user: model.Result(
+        //
+      ),
+    );
+  }
+}

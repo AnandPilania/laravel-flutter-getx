@@ -45,7 +45,7 @@ abstract class FlutterGeneratorCommand extends Command
         $name = $this->getNameInput();
 
         $path = $this->getPath($name);
-        $dartFile = $path . '/' . Str::slug($name, '_') . ($this->type === 'Model' ? '' : '_' . Str::lower($this->type)) . '.dart';
+        $dartFile = $path . '/' . $this->getFlutteredName($name) . ($this->type === 'Model' ? '' : '_' . Str::lower($this->type)) . '.dart';
 
         if ((!$this->hasOption('force') ||
                 !$this->option('force')) &&
@@ -61,6 +61,11 @@ abstract class FlutterGeneratorCommand extends Command
         $this->files->put($dartFile, $this->buildClass($name));
 
         $this->info($this->type . ' created successfully.');
+    }
+
+    protected function getFlutteredName($name)
+    {
+        return Str::slug($name, '_');
     }
 
     protected function alreadyExists($file)
@@ -116,7 +121,7 @@ abstract class FlutterGeneratorCommand extends Command
 
     protected function getProjectInput()
     {
-        return Str::slug(trim($this->argument('project')), '_');
+        return $this->getFlutteredName(trim($this->argument('project')), '_');
     }
 
     protected function isReservedName($name)

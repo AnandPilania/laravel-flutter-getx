@@ -20,18 +20,19 @@ class MakeControllerCommand extends FlutterGeneratorCommand
         }
     }
 
-    protected function replaceWith($stub, $name) {
+    protected function replaceWith($stub, $name)
+    {
         $provider = $this->option('provider') ?? '';
 
         $providerReplaced = str_replace('{{PROVIDER}}', Str::title($provider), $stub);
-        $sProviderReplaces = str_replace('{{SPROVIDER}}', Str::lower($provider), $providerReplaced);
+        $sProviderReplaces = str_replace('{{SPROVIDER}}', $this->getFlutteredName($provider), $providerReplaced);
 
         return $sProviderReplaces;
     }
-    
+
     protected function getStub()
     {
-        return __DIR__ . $this->stubPath . '/controller'.($this->option('provider') ? '.provider' : '').'.stub';
+        return __DIR__ . $this->stubPath . '/controller' . ($this->option('provider') ? '.provider' : '') . '.stub';
     }
 
     protected function getOptions()

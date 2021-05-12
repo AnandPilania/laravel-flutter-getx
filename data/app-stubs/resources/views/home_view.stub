@@ -8,7 +8,7 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       body: Container(
         child: Center(
-          child: Text('HomeView'),
+          child: Text('HomeView [Count: $controller.count]'),
         ),
       ),
     );
