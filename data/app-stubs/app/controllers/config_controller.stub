@@ -1,0 +1,33 @@
+import 'package:get/get.dart';
+import 'package:{{APP_NAME}}/app/providers/config_provider.dart';
+import 'package:{{APP_NAME}}/core/controller_base.dart';
+
+class ConfigController extends ControllerBase {
+  ConfigProvider _provider;
+  ConfigController(this._provider);
+
+  @override
+  void onInit() async {
+    if(appService.config == null) {
+      isProcessing = true;
+      await _provider.getConfig().then((v) {
+        appService.config(v)
+        appService.storage.write('config', v);
+      });
+
+      isProcessing = false;
+    }
+
+    super.onInit();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+  }
+}

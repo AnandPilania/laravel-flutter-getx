@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
+import 'package:{{APP_NAME}}/app/services/app_service.dart';
 import 'package:{{APP_NAME}}/routes.dart';
 
 abstract class ControllerBase extends GetxController {
   AppService _appService = Get.find();
+  AppService get appService => _appService;
   
   String? _returnTo;
   RxBool _isProcessing = true.obs;
@@ -11,9 +13,16 @@ abstract class ControllerBase extends GetxController {
 
   @override
   void onInit() {
+    isProcessing = true;
     _returnTo = Get.parameters['returnTo'];
 
     super.onInit();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    isProcessing = false;
   }
 
   void comeBack(String goTo, String returnTo) {

@@ -2,6 +2,7 @@
 
 namespace KSPEdu\LaravelFlutterGetx;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use KSPEdu\LaravelFlutterGetx\Commands\CreateProjectCommand;
 use KSPEdu\LaravelFlutterGetx\Commands\MakeBindingCommand;
@@ -16,17 +17,17 @@ use KSPEdu\LaravelFlutterGetx\Commands\MakeViewCommand;
 
 class ServiceProvider extends BaseServiceProvider
 {
+    protected $rawConfig = __DIR__ . '/../config/ksp-lfg.php';
+
     public function boot()
     {
-        $rawConfig = __DIR__ . '/../config/ksp-lfg.php';
-
-        $this->configurePublishing($rawConfig);
-
-        $this->mergeConfigFrom($rawConfig, 'ksp-lfg');
+        $this->configurePublishing();
+        $this->configureRoutes();
     }
 
     public function register()
     {
+        $this->mergeConfigFrom($this->rawConfig, 'ksp-lfg');
         $this->registerCommands();
     }
 
@@ -48,12 +49,25 @@ class ServiceProvider extends BaseServiceProvider
         }
     }
 
-    protected function configurePublishing($rawConfig)
+    protected function configurePublishing()
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                $rawConfig => config_path('ksp-lfg.php'),
+                $this->rawConfig => config_path('ksp-lfg.php'),
             ], 'ksp-lfg');
+        }
+    }
+
+    protected function configureRoutes()
+    {
+        if (config('ksp-lfg.config.enabled')) {
+            Route::group([
+                'prefix' => 'api',
+                'namespace' => 'KSPLaravel\FlutterGetx\Controllers',
+                //'middleware' => (config('ksp-lfg.config.middleware.enabled') ? config('ksp-lfg.config.middleware.middlewares') : []),
+            ], function () {
+                $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+            });
         }
     }
 

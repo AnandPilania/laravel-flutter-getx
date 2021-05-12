@@ -1,0 +1,35 @@
+import 'package:{{APP_NAME}}\core\model_base.dart';
+
+class Config extends ModelBase {
+  late String name;
+  late String version;
+  late int subVersion;
+  bool? isAuthProtected;
+  bool? isApiProtected;
+  List?<String, String> apiProtectionHeaders;
+  late DateTime updatedAt;
+
+  Config({required this.name, required this.version, required this.subVersion, this.isAuthProtected, this.isApiProtected, this.apiProtectionHeaders, required this.updatedAt,});
+
+  Config.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    version = json['version];
+    subVersion = json['subVersion];
+    isAuthProtected = json['isAuthProtected'] ?? null;
+    isApiProtected = json['isApiProtected'] ?? null;
+    apiProtectionHeaders = json['apiProtectionHeaders'] ?? null;
+    updatedAt = DateTime.parse(json['updatedAt]);
+  }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['name'] = name;
+    data['version'] = version;
+    data['subVersion'] = subVersion;
+    data['isAuthProtected'] = isAuthProtected;
+    data['isApiProtected'] = isApiProtected;
+    data['apiProtectionHeaders'] = apiProtectionHeaders;
+    data['updatedAt'] = updatedAt;
+    return data;
+  }
+}

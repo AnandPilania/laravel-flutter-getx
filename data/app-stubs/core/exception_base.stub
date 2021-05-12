@@ -1,4 +1,4 @@
-class ExceptionBase implements Exception {
+abstract class ExceptionBase implements Exception {
   final _message;
   final _prefix;
 

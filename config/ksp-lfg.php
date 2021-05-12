@@ -1,7 +1,32 @@
 <?php
 
+use KSPEdu\LaravelFlutterGetx\Http\Middleware\FlutterMiddleware;
+
 return [
     'path' => base_path('flutter_app'),
+
+    'config' => [
+        'enabled' => true,
+        'middleware' => [
+            'enabled' => true,
+            'middlewares' => [
+                FlutterMiddleware::class,
+            ],
+        ],
+        'route' => 'config', // http|s://website.com/api/...
+        'is_auth_rotected' => false,
+        'is_api_protected' => true,
+        'api_protection_headers' => [
+            'flutter_app' => 'appVersion.appSubVersion',
+            'test' => 'thiss',
+        ],
+        'params' => [
+            'appName' => 'Flutter App',
+            'appVersion' => '1.0.0',
+            'appSubVersion' => 1,
+            'updatedAt' => '2021-12-12 12:12:12',
+        ],
+    ],
 
     'structure' => [
         'bindings' => 'app/bindings',

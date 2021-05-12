@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:{{APP_NAME}}/app/services/app_service.dart';
+import 'package:{{APP_NAME}}/app/controllers/config_controller.dart';
+import 'package:{{APP_NAME}}/app/providers/config_provider.dart';
 import 'package:{{APP_NAME}}/routes.dart';
 
-void main() {
+void main() async {
+  await initServices();
   runApp(MyApp());
 }
 
 initServices() async {
   await GetStorage.init();
   await Get.putAsync(() => AppService().init());
+  await Get.putAsync<ConfigController>(() => ConfigController(ConfigProvider()));
 }
 
 class MyApp extends StatelessWidget {

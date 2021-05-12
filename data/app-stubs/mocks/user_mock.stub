@@ -1,13 +1,15 @@
-import 'package:{{APP_NAME}}/app/models/user.dart' as model;
+import 'package:get/get.dart';
+import 'package:{{APP_NAME}}/app/models/user.dart';
 
 class UserMock extends MockBase {
-  static model.Demo result(data) {
-    return model.Result(
-      user: model.Result(
-        id: 1, 
-        name: 'My Name',
-        email: 'example@email.com',
-      ),
+  static User result(data) {
+    return User(
+      id: 1, 
+      name: 'My Name',
+      email: 'example@email.com',
+      token: 'abc123xyz890',
+      createdAt: DateTime.now().subtract(7.days),
+      updatedAt: DateTime.now(),
     );
   }
 }

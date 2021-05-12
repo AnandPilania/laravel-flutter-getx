@@ -5,11 +5,15 @@ import 'package:{{APP_NAME}}/config/constants.dart';
 import 'package:{{APP_NAME}}/app/exceptions/bad_request_exception.dart';
 import 'package:{{APP_NAME}}/app/exceptions/unauthorised_exception.dart';
 import 'package:{{APP_NAME}}/app/exceptions/fetch_data_exception.dart';
+import 'package:{{APP_NAME}}/app/models/config.dart';
 
 abstract class ProviderBase extends GetConnect {
+  AppService _appService = Get.find();
+
   @override
-  void onInit() {
+  void onInit() async {
     httpClient.baseUrl = api;
+    await _setHeaders();
   }
 
   dynamic response(Response r) {
@@ -26,6 +30,18 @@ abstract class ProviderBase extends GetConnect {
       default:
         throw FetchDataException(
             'Error occured while Communication with Server with StatusCode : ${r.statusCode}');
+    }
+  }
+
+  Future<void> _setHeaders() {
+    if(_appService.config.isApiProtected != null && _appService.config.apiProtectionHeaders != null) {
+      List<String, dynamic> headers = {};
+
+      if(appService.user) {
+        headers.add('Authorization', 'Bearer ');
+      }
+
+      httpClient.headers = {};
     }
   }
 }

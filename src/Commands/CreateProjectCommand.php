@@ -27,14 +27,18 @@ class CreateProjectCommand extends Command
 
     protected $scaffold = [
         'app/bindings' => 'home_binding.stub',
-        'app/controllers' => 'home_controller.stub',
+        'app/controllers' => [
+            'config_controller.stub', 'home_controller.stub',
+        ],
         'app/exceptions' => [
             'bad_request_exception.stub',
             'fetch_data_exception.stub',
             'invalid_input_exception.stub',
             'unauthorised_exception.stub',
         ],
-        'app/models' => 'user.stub',
+        'app/models' => [
+            'config.stub', 'user.stub',
+        ],
         'app/services' => 'app_service.stub',
 
         'config' => 'constants.stub',
@@ -50,7 +54,13 @@ class CreateProjectCommand extends Command
             'translation_base.stub',
         ],
 
-        'mocks' => 'user_mock.stub',
+        'mocks' => [
+            'config_mock.stub', 'user_mock.stub',
+        ],
+
+        'providers' => [
+            'config_provider.stub',
+        ],
 
         'resources/lang' => 'en.stub',
         'resources/views' => 'home_view.stub',

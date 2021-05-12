@@ -1,33 +1,21 @@
 import 'package:{{APP_NAME}}\core\model_base.dart';
 
 class User extends ModelBase {
-  late Result user;
-
-  User({required this.result});
-
-  User.fromJson(Map<String, dynamic> json) {
-    if (json['data'] != null) {
-      result = Result.fromJson(json['data']);
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['data'] = result.map((v) => v.toJson()).toList();
-    return data;
-  }
-}
-
-class Result extends ModelBase {
   late int id;
   late String name;
   late String email;
-  Result({required this.id, required this.name, reuired this.email});
+  late String token;
+  late DateTime createdAt;
+  DateTime? updatedAt;
+  User({required this.id, required this.name, required this.email, required this.token, required this.createdAt, this.updatedAt});
 
-  Result.fromJson(Map<String, dynamic> json) {
-    id = json['id];
-    name = json['name];
-    email = json['email];
+  User.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    email = json['email'];
+    token = json['token'];
+    createdAt = json['createdAt'];
+    updatedAt = json['updatedAt'] ?? '';
   }
 
   Map<String, dynamic> toJson() {
@@ -35,6 +23,9 @@ class Result extends ModelBase {
     data['id'] = id;
     data['name'] = name;
     data['email'] = email;
+    data['token'] = token;
+    data['createdAt'] = createdAt;
+    data['updatedAt'] = updatedAt;
     return data;
   }
 }

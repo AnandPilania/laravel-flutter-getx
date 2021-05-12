@@ -11,3 +11,5 @@ const String DEV_API = 'http://localhost:8000/api/';
 const String PROD_API = 'https://kspedu.com/api/';
 String get api => ENV == ENV_DEV ? DEV_API : PROD_API;
 const String API_CONFIG = 'config';
+
+const String K_LOADING = 'Loading...';
