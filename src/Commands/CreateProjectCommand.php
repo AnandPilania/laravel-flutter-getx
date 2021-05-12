@@ -26,10 +26,7 @@ class CreateProjectCommand extends Command
     ];
 
     protected $scaffold = [
-        'app/bindings' => [
-            'config_binding.stub',
-            'home_binding.stub',
-        ],
+        'app/bindings' => 'home_binding.stub',
         'app/controllers' => [
             'config_controller.stub',
             'home_controller.stub',
@@ -44,9 +41,7 @@ class CreateProjectCommand extends Command
             'config.stub',
             'user.stub',
         ],
-        'app/providers' => [
-            'config_provider.stub',
-        ],
+        'app/providers' => 'config_provider.stub',
         'app/services' => 'app_service.stub',
 
         'config' => 'constants.stub',
