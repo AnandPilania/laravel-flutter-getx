@@ -5,9 +5,7 @@ Scaffold Flutter project from [Laravel](https://laravel.com) :) with [GetX](http
 
 ## What it'll do:
 1. `Create` Flutter project via `shell_exec`
-
 2. Structure it like Laravel
-
 3. Scaffold
 
 
@@ -22,7 +20,7 @@ Scaffold Flutter project from [Laravel](https://laravel.com) :) with [GetX](http
     - providers // API communications
     - services // Global/App services
   - config // App config
-  - mocks // Mocking data in `dev` env
+  - mocks // Mocking data in 'dev' env
   -resources
     - lang
     - views
@@ -31,7 +29,7 @@ Scaffold Flutter project from [Laravel](https://laravel.com) :) with [GetX](http
   - routes.dart // Route management
 ```
 
-### [WINDOWS ONLY: till now] IF YOU WANT TO CREATE NEW FLUTTER APP WITH THIS STRUCTURE:
+#### [WINDOWS ONLY: till now] IF YOU WANT TO CREATE NEW FLUTTER APP WITH THIS STRUCTURE:
 1: Clone the repo,
 2: Open `cmd` & change the working dir to `bin` & run,
 ```
@@ -58,15 +56,12 @@ php artisan flutter:create project_name
 ```
 
 ## Other commands
-```
-`flutter:make:binding` => w/o `controller` &| `provider`
-`flutter:make:controller` => w/o `provider`
-`flutter:make:exception` => w/o message
-`flutter:make:lang`
-`flutter:make:mock` => w/o `model`
-`flutter:make:model` => w/o `mock`
-`flutter:make:provider` => w/o sample
-`flutter:make:service`
-`flutter:make:view`
-```
-
+- `flutter:make:binding` => w/o `controller` &| `provider`
+- `flutter:make:controller` => w/o `provider`
+- `flutter:make:exception` => w/o message
+- `flutter:make:lang`
+- `flutter:make:mock` => w/o `model`
+- `flutter:make:model` => w/o `mock`
+- `flutter:make:provider` => w/o sample
+- `flutter:make:service`
+- `flutter:make:view`
