@@ -14,6 +14,7 @@
         }
     ],
     "require": {
+		"php": "^7.4 || ^8.0",
         "laravel/framework": "^8.12",
         "symfony/yaml": "^5.2"
     },
@@ -32,6 +33,9 @@
             ]
         }
     },
+	"bin": [
+        "bin/ksp-lfg"
+    ],
     "config": {
         "sort-packages": true
     },

@@ -26,6 +26,14 @@ Scaffold Flutter project from [Laravel](https://laravel.com) :) with [GetX](http
   - routes.dart // Route management
 ```
 
+### [WINDOWS ONLY: till now] IF YOU WANT TO CREATE NEW FLUTTER APP WITH THIS STRUCTURE ONLY:
+1: Clone the repo,
+2: Open `cmd` & change the working dir to `bin` & run,
+```
+.\win-structure.bat APP_NAME
+```
+This will first run `flutter create` command & structure your new app afterthat.
+
 ## How to use
 1. Install
 ```
