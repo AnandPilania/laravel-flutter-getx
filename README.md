@@ -1,5 +1,6 @@
 # [DEV] laravel-flutter-getx
 Scaffold Flutter project from [Laravel](https://laravel.com) :) with [GetX](https://pub.dev/packages/get) to accomplish Laravel structure.
+
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FAnandPilania%2Flaravel-flutter-getx&count_bg=%23FF3863&title_bg=%232C3E50&icon=&icon_color=%23E7E7E7&title=HITS&edge_flat=false)](https://hits.seeyoufarm.com)
 
 ## What it'll do:
