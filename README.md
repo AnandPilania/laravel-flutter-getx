@@ -40,7 +40,7 @@ This will first run `flutter create` command & structure your new app afterthat.
 ## How to use
 1. Install
 ```
-composer install kspedu/laravel-flutter-getx
+composer require kspedu/laravel-flutter-getx
 ```
 
 2. Publish the `config`
