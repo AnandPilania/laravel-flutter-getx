@@ -1,6 +1,6 @@
 <?php
 
-namespace KSPEdu\LaravelFlutterGetx\Commands;
+namespace LaravelFlutterGetx\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -75,14 +75,14 @@ class CreateProjectCommand extends Command
     {
         parent::__construct();
         $this->files = $files;
-        $this->flutterPath = config('ksp-lfg.path', base_path('flutter'));
+        $this->flutterPath = config('laravel-flutter-getx.path', base_path('flutter'));
     }
 
     public function handle()
     {
         $this->makeDirectory($this->flutterPath);
 
-        $structure = config('ksp-lfg.structure', []);
+        $structure = config('laravel-flutter-getx.structure', []);
 
         $name = $this->getNameInput();
         $path = $this->getPath($name);

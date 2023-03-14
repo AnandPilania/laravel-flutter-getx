@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+
+// Are we running global or per project?
+if(is_file( __DIR__.'/../../../../vendor/autoload.php')) {
+    require  __DIR__.'/../../../../vendor/autoload.php';
+} else {
+    require __DIR__.'/../../../autoload.php';
+}
+
+$app = new Symfony\Component\Console\Application('Laravel Flutter GetX', '1.0.0');
+
+$app->add(new LaravelFlutterGetx\Commands\CreateProjectCommand);
+$app->add(new LaravelFlutterGetx\Commands\MakeBindingCommand);
+$app->add(new LaravelFlutterGetx\Commands\MakeControllerCommand);
+$app->add(new LaravelFlutterGetx\Commands\MakeExceptionCommand);
+$app->add(LaravelFlutterGetx\Commands\MakeLangCommand);
+$app->add(LaravelFlutterGetx\Commands\MakeMockCommand);
+$app->add(LaravelFlutterGetx\Commands\MakeModelCommand);
+$app->add(LaravelFlutterGetx\Commands\MakeProviderCommand);
+$app->add(LaravelFlutterGetx\Commands\MakeServiceCommand);
+$app->add(LaravelFlutterGetx\Commands\MakeViewCommand);
+
+$app->run();

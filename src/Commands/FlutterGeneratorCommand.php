@@ -1,6 +1,6 @@
 <?php
 
-namespace KSPEdu\LaravelFlutterGetx\Commands;
+namespace LaravelFlutterGetx\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -25,7 +25,7 @@ abstract class FlutterGeneratorCommand extends Command
         parent::__construct();
 
         $this->files = $files;
-        $this->config = config('ksp-lfg');
+        $this->config = config('laravel-flutter-getx');
     }
 
     public function handle()

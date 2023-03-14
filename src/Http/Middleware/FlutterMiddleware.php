@@ -1,6 +1,6 @@
 <?php
 
-namespace KSPEdu\LaravelFlutterGetx\Http\Middleware;
+namespace LaravelFlutterGetx\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
@@ -10,7 +10,7 @@ class FlutterMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        $config = config('ksp-lfg.config');
+        $config = config('laravel-flutter-getx.config');
 
         if($config['is_auth_protected']) {
             // TODO: Check authorization

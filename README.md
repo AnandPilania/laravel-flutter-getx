@@ -40,15 +40,15 @@ This will first run `flutter create` command & structure your new app afterthat.
 ## How to use
 1. Install
 ```
-composer require kspedu/laravel-flutter-getx
+composer require anandpilania/laravel-flutter-getx
 ```
 
 2. Publish the `config`
 ```
-php artisan vendor:publish --tag=ksp-lfg
+php artisan vendor:publish --tag=laravel-flutter-getx
 ```
 
-3. Configure the `flutter apps` path `config\ksp-lfg.php`
+3. Configure the `flutter apps` path `config\laravel-flutter-getx.php`
 
 4. Create Flutter Project
 ```

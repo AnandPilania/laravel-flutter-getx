@@ -1,6 +1,6 @@
 <?php
 
-namespace KSPEdu\LaravelFlutterGetx\Commands;
+namespace LaravelFlutterGetx\Commands;
 
 class MakeViewCommand extends FlutterGeneratorCommand
 {

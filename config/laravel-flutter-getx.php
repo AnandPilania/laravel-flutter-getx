@@ -1,6 +1,6 @@
 <?php
 
-use KSPEdu\LaravelFlutterGetx\Http\Middleware\FlutterMiddleware;
+use LaravelFlutterGetx\Http\Middleware\FlutterMiddleware;
 
 return [
     'path' => base_path('flutter_app'),

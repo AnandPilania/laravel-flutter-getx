@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use KSPEdu\LaravelFlutterGetx\Http\Controllers\ApiController;
+use LaravelFlutterGetx\Http\Controllers\ApiController;
 
-Route::get(config('ksp-lfg.config.route', 'config'), [ApiController::class, '__invoke'])
+Route::get(config('laravel-flutter-getx.config.route', 'config'), [ApiController::class, '__invoke'])
     ->name('api.flutter.config');

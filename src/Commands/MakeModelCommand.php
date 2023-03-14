@@ -1,6 +1,6 @@
 <?php
 
-namespace KSPEdu\LaravelFlutterGetx\Commands;
+namespace LaravelFlutterGetx\Commands;
 
 use Symfony\Component\Console\Input\InputOption;
 
